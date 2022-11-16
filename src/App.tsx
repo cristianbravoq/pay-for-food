@@ -1,57 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+/* import { useState } from "react"; */
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+/* import { ProtectedRoute } from "./components/security/ProtectedRoutes" */
+
+import { SignIn, SignUp } from "./components/auth/index"
+import Dashboard from "./components/dashboard/Dashboard"
+
+//Peticiones Services
+//import { authUser } from "./services/Auth"
+//import { GetOrdersByRestaurant } from './services/GetOrderByRestaurant'
+//import { GetOrdersByNumber } from './services/GetOrderByNumber'
 
 function App() {
+
+  /* const [user, setUser] = useState<{
+    usuario: string;
+    contraseña: string;
+  } | null>(null);
+
+  const login = () =>
+    setUser({
+      usuario: "UsuarioPrueba",
+      contraseña: "ContraseñaPrueba"
+    });
+  const logout = () => {
+    setUser(null);
+  } */
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
+    <BrowserRouter>
+      {/* <div className="absolute w-full text-center z-10 mt-2">
+        {user ? (
+          <>
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+              onClick={logout}
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+            onClick={login}
           >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+            Login
+          </button>
+        )}
+      </div> */}
+      <Routes>
+        <Route index element={<SignIn />} />
+        <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/SignIn" element={<SignIn />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
