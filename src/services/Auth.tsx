@@ -18,8 +18,8 @@ export async function authUser(usuario: User) {
                 },
             },
         );
-        console.log(data);
-        return data;
+        //console.log(JSON.stringify(data.message, null, 4));
+        return data.message;
     } catch (error) {
         if (axios.isAxiosError(error)) {
             console.log('error message: ', error.message);

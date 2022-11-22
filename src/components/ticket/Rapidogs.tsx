@@ -25,67 +25,133 @@ export function Rapidogs() {
   });
 
   return (
-    <><div className="flex justify-center mt-6">
-      <div ref={componentRef} className="flex flex-col w-min justify-center align-middle">
-        <div className="flex w-full justify-around">
-          <div className="flex items-center flex-col justify-center title1">
-            <p>RAPIDOGS UNICENTRO</p>
-            <p>GRUPO OPERA SAS</p>
-            <p>NIT: 901547119-4</p>
-            <p>CR 66B # 34A76 LC 337</p>
-            <p>MEDELLIN-ANTIOQUIA</p>
+    <>
+      <div className="flex justify-center mt-6">
+        <div
+          ref={componentRef}
+          className="flex flex-col w-min justify-center align-middle"
+        >
+          <div className="flex w-full justify-around">
+            <div className="flex items-center flex-col justify-center title1">
+              <p>RAPIDOGS UNICENTRO</p>
+              <p>GRUPO OPERA SAS</p>
+              <p>NIT: 901547119-4</p>
+              <p>CR 66B # 34A76 LC 337</p>
+              <p>MEDELLIN-ANTIOQUIA</p>
+            </div>
+          </div>
+          <hr />
+          <div className="flex flex-col w-full justify-evenly title2">
+            <div className="flex flex-row">
+              <p className="w-1/2 ml-4">Turno: 21</p>
+              <p className="w-1/2">FACTURA DE VENTA</p>
+            </div>
+            <div className="flex flex-row">
+              <p className="w-1/2 ml-4">TIQUET: F7 - 26353</p>
+              <p className="w-1/2">FECHA: {fecha[0]}</p>
+            </div>
+            <div className="flex flex-row">
+              <p className="w-1/2 ml-4">CAJERO: Pay4Food</p>
+              <p className="w-1/2">HORA: {fecha[1]}</p>
+            </div>
+          </div>
+          <div className="">
+            <table className="bg-zinc-50 title3">
+              <thead className="">
+                <tr>
+                  <th className="px-3">UDS</th>
+                  <th className="pr-5">DESCRIPCION</th>
+                  <th className="pr-5">PVP</th>
+                  <th className="px-3">VALOR</th>
+                </tr>
+              </thead>
+              <hr />
+              {productos.map((producto: any, idx: any) => {
+                return (
+                  <tbody key={idx}>
+                    <tr>
+                      <td className="px-3">{producto.cantidad}</td>
+                      <td className="pr-5">{producto.nombrE_PRODUCTO}</td>
+                      <td className="pr-5">{dataString.valor}</td>
+                      <td className="px-3">{dataString.valor}</td>
+                    </tr>
+                  </tbody>
+                );
+              })}
+              <hr />
+            </table>
+          </div>
+          <div className="title2 my-2">
+            <hr />
+            <hr />
+            <div className="flex flex-row gap-4 justify-end mr-3">
+              <p>BASE IMPONIBLE</p>
+              <p>16471</p>
+            </div>
+            <div className="flex flex-row gap-4 justify-end mr-3">
+              <p>IVA 19%</p>
+              <p>3129</p>
+            </div>
+          </div>
+          <div className="title1">
+            <hr />
+            <div className="flex flex-row gap-4 justify-end mr-3 my-4">
+              <p>TOTAL</p>
+              <p>18900</p>
+            </div>
+          </div>
+          <div className="title2">
+            <hr />
+            <div className="flex flex-row gap-4 justify-end mr-3 my-4">
+              <p>RECIBIDO</p>
+              <p>CAMBIO</p>
+            </div>
+            <div className="flex flex-row gap-4 justify-end mr-3 my-4">
+              <p className="mr-6">Pay4Food</p>
+              <p>20000</p>
+              <p>1900</p>
+            </div>
+          </div>
+          <div className="title2 mx-1">
+            <hr />
+            <div className="flex flex-row gap-4 justify-end mr-3 my-4">
+              <p>AUTORIZAICION FACTURA Nro: 18764029419211</p>
+              <p>DE : 5/27/2022 DEL : F7 - 10001</p>
+            </div>
+            <div className="flex flex-row gap-4 justify-end mr-3 my-4">
+              <p>AL: F7 - 100000</p>
+            </div>
+          </div>
+          <div className="title2 mx-1">
+            <hr />
+            <div className="flex flex-row gap-4 justify-end mr-3 my-4">
+              <p>NO SOMOS GRANDES CONTRIBUYENTES</p>
+              <p>NO SOMOS AUTORRETENEDORES</p>
+            </div>
+          </div>
+          <div className="title2 mx-1">
+            <hr />
+            <div className="flex flex-row gap-4 justify-center mr-3 my-4">
+              <p>*** GRACIAS POR LA VISITA ***</p>
+            </div>
+          </div>
+          <div className="title2 mx-1">
+            <hr />
+            <div className="flex flex-col justify-center items-center">
+              <p>*Software ICG-Front Rest</p>
+              <p>Soluciones Fourgen, Tel (023465345)</p>
+            </div>
           </div>
         </div>
-        <hr />
-        <div className="flex flex-col w-full justify-evenly title2">
-          <div className="flex flex-row">
-            <p className="w-1/2 ml-4">Turno: 21</p>
-            <p className="w-1/2">FACTURA DE VENTA</p>
-          </div>
-          <div className="flex flex-row">
-            <p className="w-1/2 ml-4">TIQUET: F7 - 26353</p>
-            <p className="w-1/2">FECHA: {fecha[0]}</p>
-          </div>
-          <div className="flex flex-row">
-            <p className="w-1/2 ml-4">CAJERO: Pay4Food</p>
-            <p className="w-1/2">HORA: {fecha[1]}</p>
-          </div>
-        </div>
-        <div className="">
-          <table className="bg-zinc-50 title3">
-            <thead className="">
-              <tr>
-                <th className="px-3">UDS</th>
-                <th className="pr-5">DESCRIPCION</th>
-                <th className="pr-5">PVP</th>
-                <th className="px-3">VALOR</th>
-              </tr>
-            </thead>
-            <hr />
-            {productos.map((producto: any, idx: any) => {
-              return (
-                <tbody key={idx}>
-                  <tr>
-                    <td className="px-3">{producto.cantidad}</td>
-                    <td className="pr-5">{producto.nombrE_PRODUCTO}</td>
-                    <td className="pr-5">{dataString.valor}</td>
-                    <td className="px-3">{dataString.valor}</td>
-                  </tr>
-                </tbody>
-              );
-            })}
-            <hr />
-          </table>
+        <div className="w-full justify-center absolute bottom-0">
+          <button
+            onClick={handlePrint_Factura}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full justify-center"
+          >
+            Imprimir
+          </button>
         </div>
       </div>
-      <div className="w-full justify-center absolute bottom-0">
-        <button
-          onClick={handlePrint_Factura}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full justify-center"
-        >
-          Imprimir
-        </button>
-      </div></div>
     </>
   );
 }

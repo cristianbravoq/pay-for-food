@@ -108,7 +108,7 @@ function Dashboard() {
                 Agregar
               </button>
             </div>
-            <div className="overflow-y-scroll" style={{ maxHeight: "45vh" }}>
+            <div className="overflow-y-scroll" style={{ maxHeight: "50vh" }}>
               <OrdersList data={data} />
             </div>
           </div>

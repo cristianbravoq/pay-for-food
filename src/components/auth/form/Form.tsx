@@ -16,12 +16,10 @@ export function Form(props: any = "SignIn") {
   const dispatch = useAppDispatch();
 
   const onSubmit = async (res: User) => {
-    const message  = authUser(res)
-    const verificacion = message.then(res => res?.message)
-    const dataLog = message.then(res => res?.data)
-    console.log(verificacion)
+    dispatch(loginSlice(res))
+    const message = authUser(res)
     await GetOrderByRestaurant({id_Restaurante: 1})
-    if (await verificacion === 'Login exitoso') {
+    if (await message === 'Login exitoso') {
         setTimeout(() => {
             // 👇 Redirects to about page, note the `replace: true`
 
