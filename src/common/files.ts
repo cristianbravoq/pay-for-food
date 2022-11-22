@@ -18,6 +18,11 @@ export interface UserLog {
   };
 }
 
+export interface DataLog {
+  nombre: string;
+  iD_RESTAURANTE: number;
+}
+
 export interface CreateOrder {
   productos: [
     {
@@ -55,11 +60,11 @@ export interface CreateOrder {
               cantidad: number;
               disponible: boolean;
             }
-          ]
+          ];
         }
-      ]
+      ];
     }
-  ]
+  ];
   totaL_VENTA: number;
   nombrE_CLIENTE: string;
   comentario: string;
@@ -72,6 +77,38 @@ export interface GetOrdersByNumber {
 
 export interface GetOrdersByRestaurant {
   id_Restaurante: number;
+}
+
+export interface _resOrdersByRestaurant {
+  numerO_PEDIDO: string;
+  nombrE_CLIENTE: string;
+  valor: number;
+  comentario: string;
+  iD_ESTADO_PEDIDO: number;
+  estado: string;
+  productos: _resOrdersByRestaurant_productos
+}
+
+export interface _resOrdersByRestaurant_productos {
+  cantidad: number;
+  descripcion: string;
+  nombrE_PRODUCTO: string;
+  iD_PRODUCTOS_PEDIDO: number;
+  imagen: string;
+  estado: string;
+  categorias: _resOrdersByRestaurant_categorias
+}
+
+export interface _resOrdersByRestaurant_categorias {
+  categoria: string;
+  iD_CATEGORIA_PRODUCTO_PEDIDO: number;
+  recetas: _resOrdersByRestaurant_recetas
+}
+
+export interface _resOrdersByRestaurant_recetas {
+  iteM_RECETA: string;
+  valor: number;
+  cantidad: number;
 }
 
 export interface ActualizarPedido {

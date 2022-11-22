@@ -4,3 +4,8 @@
   border-bottom: 2px solid rgba(151, 141, 141, 0.557);
   border-radius: 7px;
 }
+
+.cover {
+  width: 10vw;
+  object-fit: cover;
+}

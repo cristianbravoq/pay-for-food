@@ -1,10 +1,8 @@
 import axios from "axios";
 
-import { User } from '../common/files'
+import { Response, User } from '../common/files'
 
-import { Response } from '../common/files'
-
-const BASE_URL = 'http://localhost:10144/Login/Login';
+const BASE_URL = 'https://apipayforfood.e-city.co/Login/Login';
 //{ usuario: 'Ecity.Software', contraseña: 'Pay4Food2022/*/' }
 
 export async function authUser(usuario: User) {
@@ -20,8 +18,8 @@ export async function authUser(usuario: User) {
                 },
             },
         );
-        console.log(JSON.stringify(data.message, null, 4));
-        return data.message;
+        console.log(data);
+        return data;
     } catch (error) {
         if (axios.isAxiosError(error)) {
             console.log('error message: ', error.message);

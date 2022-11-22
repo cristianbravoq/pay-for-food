@@ -3,22 +3,28 @@ import { useForm } from "react-hook-form";
 import { useAppDispatch } from "../../../app/states/hooks";
 import { loginSlice } from "../../../features/auth/authSlice";
 
+import { GetOrderByRestaurant } from "../../../services/GetOrderByRestaurant";
+
 import { User } from "../../../common/files";
 import { authUser } from '../../../services/Auth'
 
 export function Form(props: any = "SignIn") {
 
-  const { register, handleSubmit} = useForm<User>();
+  const { register, handleSubmit } = useForm<User>();
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const onSubmit = async (res: User) => {
-    dispatch(loginSlice(res))
-    const message = authUser(res)
-    if (await message === 'Login exitoso') {
+    const message  = authUser(res)
+    const verificacion = message.then(res => res?.message)
+    const dataLog = message.then(res => res?.data)
+    console.log(verificacion)
+    await GetOrderByRestaurant({id_Restaurante: 1})
+    if (await verificacion === 'Login exitoso') {
         setTimeout(() => {
             // 👇 Redirects to about page, note the `replace: true`
+
             navigate('/Dashboard', { replace: true });
           }, 1000);
     }

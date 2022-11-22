@@ -1,17 +1,30 @@
-/* import { useState } from "react"; */
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 /* import { ProtectedRoute } from "./components/security/ProtectedRoutes" */
-
 import { SignIn, SignUp } from "./components/auth/index"
 import Dashboard from "./components/dashboard/Dashboard"
-
-//Peticiones Services
-//import { authUser } from "./services/Auth"
-//import { GetOrdersByRestaurant } from './services/GetOrderByRestaurant'
-//import { GetOrdersByNumber } from './services/GetOrderByNumber'
+import Details from "./components/details/Details";
+import { Factura } from "./components/ticket/Factura";
+import { Rapidogs } from "./components/ticket/Rapidogs";
 
 function App() {
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<SignIn />} />
+        <Route path="/signUp" element={<SignUp />} />
+        <Route path="/signIn" element={<SignIn />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/details" element={<Details/>} />
+        <Route path="/factura" element={<Factura/>} />
+        <Route path="/rapidogs" element={<Rapidogs/>} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
 
   /* const [user, setUser] = useState<{
     usuario: string;
@@ -27,9 +40,7 @@ function App() {
     setUser(null);
   } */
 
-  return (
-    <BrowserRouter>
-      {/* <div className="absolute w-full text-center z-10 mt-2">
+  /* <div className="absolute w-full text-center z-10 mt-2">
         {user ? (
           <>
             <button
@@ -47,15 +58,4 @@ function App() {
             Login
           </button>
         )}
-      </div> */}
-      <Routes>
-        <Route index element={<SignIn />} />
-        <Route path="/SignUp" element={<SignUp />} />
-        <Route path="/SignIn" element={<SignIn />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
-export default App;
+      </div> */

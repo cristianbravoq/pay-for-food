@@ -1,16 +1,18 @@
 import axios from "axios";
 
-import { Response, GetOrdersByRestaurant } from '../common/files'
+import { Response } from '../common/files'
 
-const BASE_URL = 'https://apipayforfood.e-city.co/Order/GetOrdersByRestaurant';
+const BASE_URL = 'https://apipayforfood.e-city.co/Order/GetOrdersByState';
 
-
-export async function GetOrderByRestaurant(id_Restaurante: GetOrdersByRestaurant) {
+export async function GetOrderByState(id_State: number) {
     try {
         // 👇️ const data: CreateUserResponse
         const { data } = await axios.post<Response>(
             BASE_URL,
-            { id_Restaurante: 1 },
+            {
+                id_Restaurante: 1,
+                id_State: id_State
+            },
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -19,7 +21,7 @@ export async function GetOrderByRestaurant(id_Restaurante: GetOrdersByRestaurant
             },
         );
         //console.log(JSON.stringify(data.data, null, 4));
-        return data.data;
+        return data;
     } catch (error) {
         if (axios.isAxiosError(error)) {
             console.log('error message: ', error.message);
