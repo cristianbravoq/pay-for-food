@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 
-export function Rapidogs() {
+export function Mitos() {
   let now = new Date().toUTCString();
   let fecha = now.split("22 ");
   console.log(fecha);
@@ -33,13 +33,14 @@ export function Rapidogs() {
         >
           <div className="flex w-full justify-around">
             <div className="flex items-center flex-col justify-center title1">
-              <p>RAPIDOGS UNICENTRO</p>
-              <p>GRUPO OPERA SAS</p>
+              <p>MITOS UNICENTRO</p>
               <p>NIT: 901547119-4</p>
-              <p>CR 66B # 34A76 LC 337</p>
-              <p>MEDELLIN-ANTIOQUIA</p>
+              <p>INVERSIONES MITOS SAS</p>
+              <p>CR 66B # 34A76 LC 211</p>
+              <p>TELEFONO: mitoscomidatipica@gmail.com</p>
             </div>
           </div>
+          <hr /><hr />
           <div className="flex flex-col w-full justify-evenly title2 my-2">
             <div className="flex flex-row">
               <p className="w-1/2 ml-4">Turno: 21</p>

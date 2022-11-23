@@ -16,8 +16,12 @@ export function Form(props: any = "SignIn") {
   const dispatch = useAppDispatch();
 
   const onSubmit = async (res: User) => {
-    dispatch(loginSlice(res))
-    const message = authUser(res)
+    const dataLog = authUser(res)
+    const message = await dataLog.then(res => res?.message)
+    const dataAuth = await dataLog.then(res => res?.data)
+    console.log(message, dataAuth)
+    if (dataAuth !== undefined) dispatch(loginSlice(dataAuth))
+    
     await GetOrderByRestaurant({id_Restaurante: 1})
     if (await message === 'Login exitoso') {
         setTimeout(() => {

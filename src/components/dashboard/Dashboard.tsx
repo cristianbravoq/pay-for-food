@@ -5,7 +5,7 @@ import { Sidebar } from "../../pages/Sidebar";
 import { OrdersList } from "./pages/OrdesList";
 
 //Hooks
-import { useAppDispatch } from "../../app/states/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/states/hooks";
 import { useState } from "react";
 import { orderByRestaurantSlice } from "../../features/orders/ordersSlice";
 
@@ -18,16 +18,18 @@ import Preparacion from "../../assets/preparacion.png";
 import Entregado from "../../assets/entregado.png";
 
 function Dashboard() {
-
   const [data, setData] = useState<any[]>([]);
   //Funcion que actualiza la informacion para que pueda ser obtenida desde cualquier componente
   const dispatch = useAppDispatch();
+  const authUser = useAppSelector(state => state.auth.Users)
+  console.log(authUser)
 
   function dataProps(props: any) {
     const dataString = JSON.stringify(props.data);
     const dataArray = JSON.parse(dataString);
     console.log(dataArray, "dataArray");
-    setData(dataArray);
+    setData(dataArray.reverse());
+    console.log(data, "data Reversado");
     dispatch(orderByRestaurantSlice(dataArray));
   }
 
@@ -103,7 +105,7 @@ function Dashboard() {
           </div>
           <div>
             <div className="flex flex-row my-5 justify-between items-center">
-              <h2>Nombre del restaurante</h2>
+              <h2>{authUser.nombre}</h2>
               <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Agregar
               </button>

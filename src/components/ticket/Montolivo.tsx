@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 
-export function Rapidogs() {
+export function Montolivo() {
   let now = new Date().toUTCString();
   let fecha = now.split("22 ");
   console.log(fecha);
@@ -33,25 +33,36 @@ export function Rapidogs() {
         >
           <div className="flex w-full justify-around">
             <div className="flex items-center flex-col justify-center title1">
-              <p>RAPIDOGS UNICENTRO</p>
-              <p>GRUPO OPERA SAS</p>
-              <p>NIT: 901547119-4</p>
+              <p>UNICENTRO MEDELLIN</p>
+              <p>CC UNICENTRO LOC 212</p>
               <p>CR 66B # 34A76 LC 337</p>
-              <p>MEDELLIN-ANTIOQUIA</p>
+              <br />
+              <p>INVERSIONES MONTOLIVO SAS</p>
+              <p>NIT: 901547119-4</p>
+              <p>Regimen Comun</p>
             </div>
           </div>
-          <div className="flex flex-col w-full justify-evenly title2 my-2">
+          <div className="flex flex-col w-full justify-start title2 my-2">
+            <div className="flex flex-row">
+              <p className="w-1/2 ml-4">TPV:</p>
+              <p className="w-1/2">TPVA10901</p>
+            </div>
+            <div className="flex flex-row">
+              <p className="w-1/2 ml-4">Cajero:</p>
+              <p> Pay4Food</p>
+              <p className="w-1/2">HORA: </p>
+            </div>
+            <div className="flex flex-row">
+              <p className="w-1/2 ml-4">Fecha:</p>
+              <p className="w-1/2">{fecha[0]} {fecha[1]}</p>
+            </div>
             <div className="flex flex-row">
               <p className="w-1/2 ml-4">Turno: 21</p>
               <p className="w-1/2">FACTURA DE VENTA</p>
             </div>
             <div className="flex flex-row">
               <p className="w-1/2 ml-4">TIQUET: F7 - 26353</p>
-              <p className="w-1/2">FECHA: {fecha[0]}</p>
-            </div>
-            <div className="flex flex-row">
-              <p className="w-1/2 ml-4">CAJERO: Pay4Food</p>
-              <p className="w-1/2">HORA: {fecha[1]}</p>
+              <p className="w-1/2">FECHA: </p>
             </div>
           </div>
           <div className="">

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Calendar from "../assets/Calendar.png";
 import Chart_fill from "../assets/Chart_fill.png";
 import Chart from "../assets/Chart.png";
-import Chat from "../assets/Chat.png";
+/* import Chat from "../assets/Chat.png"; */
 import Control from "../assets/control.png";
 import Folder from "../assets/Folder.png";
 import Logo from "../assets/logo.png";
@@ -13,16 +13,16 @@ import Setting from "../assets/Setting.png";
 import User from "../assets/User.png";
 
 export function Sidebar() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const Menus = [
     { title: "Dashboard", src: Chart_fill },
-    { title: "Inbox", src: Chat },
-    { title: "Accounts", src: User, gap: true },
-    { title: "Schedule ", src: Calendar },
+    /* { title: "Inbox", src: Chat }, */
     { title: "Search", src: Search },
-    { title: "Analytics", src: Chart },
-    { title: "Files ", src: Folder, gap: true },
-    { title: "Setting", src: Setting },
+    { title: "Pendientes", src: User, gap: true },
+    { title: "Preparacion", src: Calendar },
+    { title: "Entregados", src: Chart },
+    { title: "Archivos", src: Folder, gap: true },
+    { title: "Configuracion", src: Setting },
   ];
 
   return (

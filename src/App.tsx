@@ -6,6 +6,8 @@ import Dashboard from "./components/dashboard/Dashboard"
 import Details from "./components/details/Details";
 import { Factura } from "./components/ticket/Factura";
 import { Rapidogs } from "./components/ticket/Rapidogs";
+import { Mitos } from "./components/ticket/Mitos";
+import { Montolivo } from "./components/ticket/Montolivo";
 
 function App() {
 
@@ -19,6 +21,8 @@ function App() {
         <Route path="/details" element={<Details/>} />
         <Route path="/factura" element={<Factura/>} />
         <Route path="/rapidogs" element={<Rapidogs/>} />
+        <Route path="/mitos" element={<Mitos/>} />
+        <Route path="/montolivo" element={<Montolivo/>} />
       </Routes>
     </BrowserRouter>
   );

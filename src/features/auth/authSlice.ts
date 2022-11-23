@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { User } from '../../common/files'
+import { DataLog } from '../../common/files'
 
 interface authState {
-    Users: User;
+    Users: DataLog;
 }
 
 const initialState: authState = {
     Users: {
-        usuario: '',
-        contraseña: '',
+        iD_RESTAURANTE: 0,
+        nombre: '',
     },
 };
 
@@ -17,7 +17,7 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        loginSlice: (state, action: PayloadAction<User>) => {
+        loginSlice: (state, action: PayloadAction<any>) => {
             state.Users = action.payload
             console.log(state.Users)
         }

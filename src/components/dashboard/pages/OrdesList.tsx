@@ -20,7 +20,7 @@ export function OrdersList(props: any) {
           <th className="">Id</th>
           <th className="">Pedido</th>
           <th className="">Cliente</th>
-          <th className="">Producto</th>
+          <th className="">Estado</th>
           <th className="">Valor</th>
         </tr>
       </thead>
@@ -37,7 +37,19 @@ export function OrdersList(props: any) {
               <td className="border border-slate-400 bg-zinc-50">
                 {element.nombrE_CLIENTE}
               </td>
-              <td className="border border-slate-400 bg-zinc-50"></td>
+              <td className="border border-slate-400 bg-zinc-50">
+                {element.iD_ESTADO_PEDIDO <= 2 ? (
+                  <>
+                    {element.iD_ESTADO_PEDIDO === 1 ? (
+                      <>Pendiente</>
+                    ) : (
+                      <>Preparacion</>
+                    )}
+                  </>
+                ) : (
+                  <>Entregado</>
+                )}
+              </td>
               <td className="border border-slate-400 bg-zinc-50">
                 {element.valor}
               </td>
