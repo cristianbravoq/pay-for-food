@@ -18,18 +18,25 @@ import Preparacion from "../../assets/preparacion.png";
 import Entregado from "../../assets/entregado.png";
 
 function Dashboard() {
+
   const [data, setData] = useState<any[]>([]);
+  const [cantidad, setCantidad] = useState(0)
+  const [pendiente, setPendiente] = useState(false)
+  const [preparacion, setPreparacion] = useState(false)
+  const [entregado, setEntregado] = useState(false)
+
   //Funcion que actualiza la informacion para que pueda ser obtenida desde cualquier componente
   const dispatch = useAppDispatch();
-  const authUser = useAppSelector(state => state.auth.Users)
-  console.log(authUser)
+  const authUser = useAppSelector((state) => state.auth.Users);
+  console.log(authUser);
 
   function dataProps(props: any) {
     const dataString = JSON.stringify(props.data);
     const dataArray = JSON.parse(dataString);
-    console.log(dataArray, "dataArray");
+    //console.log(dataArray, "dataArray");
     setData(dataArray.reverse());
-    console.log(data, "data Reversado");
+    setCantidad(dataArray.length)
+    //console.log(data, "data Reversado");
     dispatch(orderByRestaurantSlice(dataArray));
   }
 
@@ -39,6 +46,10 @@ function Dashboard() {
   }
 
   async function orderPendiente() {
+    setPendiente(true)
+    console.log(pendiente)
+    setPreparacion(false)
+    setEntregado(false)
     const ordenesPendiente: any = await GetOrderByState(1);
     console.log(ordenesPendiente);
     ordenesPendiente.message === "Consulta Exitosa"
@@ -46,6 +57,9 @@ function Dashboard() {
       : dataNull();
   }
   async function orderPreparacion() {
+    setPendiente(false)
+    setPreparacion(true)
+    setEntregado(false)
     const ordenesPreparacion: any = await GetOrderByState(2);
     console.log(ordenesPreparacion);
     ordenesPreparacion.message === "Consulta Exitosa"
@@ -53,6 +67,9 @@ function Dashboard() {
       : dataNull();
   }
   async function orderEntregado() {
+    setPendiente(false)
+    setPreparacion(false)
+    setEntregado(true)
     const ordenesEntregado: any = await GetOrderByState(3);
     console.log(ordenesEntregado);
     ordenesEntregado.message === "Consulta Exitosa"
@@ -65,12 +82,27 @@ function Dashboard() {
       <Sidebar />
       <div className="h-screen flex flex-1 flex-col p-7">
         <div>
-          <h1 className="text-2xl font-semibold ">Dashboard</h1>
+          <h1 className="text-2xl font-semibold ">{authUser.nombre}</h1>
         </div>
-        <div className="flex flex-col">
-          <div className="flex flex-row m-5">
-            <div className="mx-5 flex flex-1 flex-col w-1/3 text-center bg-slate-200 rounded-3xl border-2 border-slate-400">
-              <button onClick={() => orderPendiente()}>
+        <div className="flex flex-row h-full">
+          <div className=" w-5/6">
+            <div className="flex flex-row my-5 justify-between items-center">
+              <h2>Dashboard</h2>
+            </div>
+            <div className="overflow-y-scroll" style={{ maxHeight: "80vh" }}>
+              <OrdersList data={data} />
+            </div>
+          </div>
+          <div className="flex flex-col m-5 h-full items-center justify-center gap-y-4 w-1/6">
+            <div className="rounded-3xl border-2 border-slate-400 p-5">   
+                <p className="text-center mx-4">Cantidad</p>
+                <h3 className="text-center">{cantidad}</h3>
+            </div>
+            <div className="flex flex-col">
+              <button
+                onClick={() => orderPendiente()}
+                className={`cover ${pendiente === true ? "bg-slate-400 text-white" : "bg-slate-200"} rounded-3xl border-2 border-slate-400 hover:text-slate-700 hover:bg-slate-50`}
+              >
                 <p className="estado-pedido">Pendientes</p>
                 <img
                   src={Pendiente}
@@ -80,8 +112,11 @@ function Dashboard() {
                 />
               </button>
             </div>
-            <div className="mx-5 flex flex-1 flex-col w-1/3 text-center bg-slate-200 rounded-3xl border-2 border-slate-400">
-              <button onClick={() => orderPreparacion()}>
+            <div className="flex flex-col">
+              <button
+                onClick={() => orderPreparacion()}
+                className={`cover ${preparacion === true ? "bg-slate-400 text-white" : "bg-slate-200"} rounded-3xl border-2 border-slate-400 hover:text-slate-700 hover:bg-slate-50`}
+              >
                 <p className="estado-pedido">Preparacion</p>
                 <img
                   src={Preparacion}
@@ -91,8 +126,11 @@ function Dashboard() {
                 />
               </button>
             </div>
-            <div className="mx-5 flex flex-1 flex-col w-1/3 text-center bg-slate-200 rounded-3xl border-2 border-slate-400">
-              <button onClick={() => orderEntregado()}>
+            <div className="flex flex-col">
+              <button
+                onClick={() => orderEntregado()}
+                className={`cover ${entregado === true ? "bg-slate-400 text-white" : "bg-slate-200"} rounded-3xl border-2 border-slate-400 hover:text-slate-700 hover:bg-slate-50`}
+              >
                 <p className="estado-pedido">Entregado</p>
                 <img
                   src={Entregado}
@@ -101,17 +139,6 @@ function Dashboard() {
                   style={{ display: "inline" }}
                 />
               </button>
-            </div>
-          </div>
-          <div>
-            <div className="flex flex-row my-5 justify-between items-center">
-              <h2>{authUser.nombre}</h2>
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Agregar
-              </button>
-            </div>
-            <div className="overflow-y-scroll" style={{ maxHeight: "50vh" }}>
-              <OrdersList data={data} />
             </div>
           </div>
         </div>

@@ -15,10 +15,9 @@ export function OrdersList(props: any) {
 
   return (
     <table className="table-fixed w-full my-5">
-      <thead>
+      <thead className="">
         <tr>
           <th className="">Id</th>
-          <th className="">Pedido</th>
           <th className="">Cliente</th>
           <th className="">Estado</th>
           <th className="">Valor</th>
@@ -27,13 +26,13 @@ export function OrdersList(props: any) {
       {usuario.map((element: any, idx: any) => {
         return (
           <tbody key={idx}>
-            <tr className="text-center">
+            <tr className="text-center text-sm">
               <td className="border border-slate-400 bg-zinc-50">
                 {element.iD_PEDIDO}
               </td>
-              <td className="border border-slate-400 bg-zinc-50">
+              {/* <td className="border border-slate-400 bg-zinc-50">
                 {element.numerO_PEDIDO}
-              </td>
+              </td> */}
               <td className="border border-slate-400 bg-zinc-50">
                 {element.nombrE_CLIENTE}
               </td>

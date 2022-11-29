@@ -26,7 +26,7 @@ export function Rapidogs() {
 
   return (
     <>
-      <div className="flex justify-center mt-6 bg-slate-500">
+      <div className="flex justify-center bg-slate-500 h-screen">
         <div
           ref={componentRef}
           className="flex flex-col w-min justify-center align-middle bg-zinc-100"
@@ -55,7 +55,7 @@ export function Rapidogs() {
             </div>
           </div>
           <div className="">
-            <table className="bg-zinc-50 title3">
+            <table className="title3">
               <thead className="">
                 <tr>
                   <th className="px-3">UDS</th>
