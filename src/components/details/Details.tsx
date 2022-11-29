@@ -63,7 +63,7 @@ function Details() {
         authUser.iD_RESTAURANTE.toString()
       ); */
     alertState()
-    /* navigate(`/Dashboard`); */
+    navigate(`/Dashboard`);
   }
 
   function alertState() {
