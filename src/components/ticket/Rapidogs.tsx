@@ -6,7 +6,7 @@ import { useReactToPrint } from "react-to-print";
 
 export function Rapidogs() {
   let now = new Date().toUTCString();
-  let fecha = now.split("22 ");
+  let fecha = now.split("2022 ");
   console.log(fecha);
 
   const location = useLocation();
@@ -20,6 +20,9 @@ export function Rapidogs() {
   const componentRef = useRef<HTMLDivElement>(null);
   const handlePrint_Factura = useReactToPrint({
     content: () => componentRef.current,
+    pageStyle:'width: 30px',
+    bodyClass:'container',
+    copyStyles: true,
     documentTitle: "Pedido",
     onAfterPrint: () => alert("Print sucess"),
   });
@@ -28,8 +31,9 @@ export function Rapidogs() {
     <>
       <div className="flex justify-center bg-slate-500 h-screen">
         <div
+        /* style={{width: '100%'}} */
           ref={componentRef}
-          className="flex flex-col w-min justify-center align-middle bg-zinc-100"
+          className="flex flex-col w-min justify-center align-middle bg-zinc-100 ml-2"
         >
           <div className="flex w-full justify-around">
             <div className="flex items-center flex-col justify-center title1">
@@ -91,7 +95,7 @@ export function Rapidogs() {
           <div className="title1">
             <div className="flex flex-row gap-4 justify-end mr-3 my-1">
               <p>TOTAL</p>
-              <p>18900</p>
+              <p>{dataString.valor}</p>
             </div>
           </div>
           <div className="title2">
@@ -101,13 +105,13 @@ export function Rapidogs() {
             </div>
             <div className="flex flex-row gap-4 justify-end mr-3 my-2">
               <p className="mr-6">Pay4Food</p>
-              <p>20000</p>
-              <p>1900</p>
+              <p className="mr-9">{dataString.reaL_AMOUNT}</p>
+              <p>{dataString.returN_AMOUNT}</p>
             </div>
           </div>
           <div className="title2 mx-1">
-            <div className="flex flex-col gap-4 justify-end mr-3 my-2">
-              <p>AUTORIZAICION FACTURA Nro: 18764029419211</p>
+            <div className="flex flex-col gap-4 justify-end mx-2 my-2">
+              <p>AUTORIZACION FACTURA Nro: 18764029419211</p>
             </div>
             <div className="flex flex-row gap-4 justify-end mr-3 my-2">
               <p>DE : 5/27/2022 </p>

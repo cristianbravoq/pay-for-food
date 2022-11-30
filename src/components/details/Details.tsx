@@ -3,6 +3,7 @@ import Swal from 'sweetalert2'
 
 import { Sidebar } from "../../pages/Sidebar";
 import { updateOrder } from "../../services/UpdateOrder";
+import { sendMsn } from "../../services/SendMsn";
 
 import ImprimirPedido from "../../assets/imprimir-pedido.png";
 import ImprimirFactura from "../../assets/imprimir-factura.png";
@@ -23,12 +24,13 @@ function Details() {
   const productos: any[] = [];
   dataOrders.productos.forEach((element: any) => productos.push(element));
 
-  //console.log(dataOrders);
+  console.log(dataOrders);
   //console.log(productos);
 
   const componentRef = useRef<HTMLDivElement>(null);
   const handlePrint_Pedido = useReactToPrint({
     content: () => componentRef.current,
+    pageStyle:'width: 90px, font-size: 15%',
     documentTitle: "Pedido",
     onAfterPrint: () => alert("Print sucess"),
   });
@@ -48,12 +50,22 @@ function Details() {
   };
   
   const [ valueState, setValueState ] = useState('')
+  const [ msnState, setMsnState ] = useState('')
   useEffect(() => {
-    if((dataOrders.iD_ESTADO_PEDIDO + 1) === 2) setValueState('Preparacion')
-    if((dataOrders.iD_ESTADO_PEDIDO + 1) === 3) setValueState('Entregado')
-    if((dataOrders.iD_ESTADO_PEDIDO + 1) === 4) setValueState('Pedido Finalizado')
+    if((dataOrders.iD_ESTADO_PEDIDO + 1) === 2) {
+      setValueState('Preparacion') 
+      setMsnState('El pedido está en Preparación')
+    }
+    if((dataOrders.iD_ESTADO_PEDIDO + 1) === 3) {
+      setValueState('Entregado')
+      setMsnState('El pedido ha sido entregado')
+    }
+    if((dataOrders.iD_ESTADO_PEDIDO + 1) === 4) {
+      setValueState('Pedido Finalizado')
+      setMsnState('El pedido se encuentra finalizado, ¡Gracias por tu compra!')
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [valueState])
+  }, [valueState, msnState])
   
   function cambiarEstado() {
     /* if (dataOrders.iD_ESTADO_PEDIDO !== 3)
@@ -63,7 +75,17 @@ function Details() {
         authUser.iD_RESTAURANTE.toString()
       ); */
     alertState()
-    navigate(`/Dashboard`);
+    msnCambioEstado()
+    //navigate(`/Dashboard`);
+  }
+
+
+  function msnCambioEstado() {
+    console.log(dataOrders.payerID)
+    sendMsn('573186480729', msnState)
+    /* if(dataOrders.payerID !== 0) {
+      sendMsn(dataOrders.payerID.cel, '')
+    } */
   }
 
   function alertState() {

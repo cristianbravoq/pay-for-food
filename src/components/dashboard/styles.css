@@ -1,8 +1,13 @@
 .estado-pedido {
-  font-size: clamp(.5rem, 2.5vw, .9rem);
+  font-size: clamp(.5rem, 95.5vw, .85rem);
   padding: 5px 0px;
   border-bottom: 2px solid rgba(151, 141, 141, 0.557);
   border-radius: 7px;
+  transition: .5s;
+}
+
+.estado-pedido:hover {
+  border-bottom: 2px solid rgba(77, 93, 196, 0.911);
 }
 
 .cover {
