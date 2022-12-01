@@ -9,7 +9,7 @@ export function SignIn() {
         <div className="relative hidden lg:flex w-1/2 h-full items-center justify-center bg-gray-200 login-container"></div>
         <div className="w-full flex flex-col items-center justify-center lg:w-1/2 form-container">
           <Form
-            textButton="SignIn"
+            textButton="Iniciar "
             account="Don´t have an account?"
             redirect="SignUp"
           />

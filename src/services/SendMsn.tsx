@@ -18,7 +18,7 @@ export async function sendMsn(telefono: string, body: string) {
     // 👇️ const data: CreateUserResponse
     const { data } = await axios.get<Response>(BASE_URL, {
       params: {
-        telefono: telefono,
+        telefono: `57${telefono}`,
         mensaje: body,
         hora: hora,
         minutos: minutos,

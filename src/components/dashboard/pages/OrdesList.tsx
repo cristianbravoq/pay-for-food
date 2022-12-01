@@ -15,7 +15,7 @@ export function OrdersList(props: any) {
 
   return (
     <table className="w-full">
-      <thead className="sticky h-16 top-0 bg-slate-900 text-white">
+      <thead className="h-16 top-0 bg-slate-900 text-white">
         <tr>
           <th className="">Id</th>
           <th className="">Cliente</th>
@@ -27,7 +27,7 @@ export function OrdersList(props: any) {
       <tbody className="">
         {usuario.map((element: any, idx: any) => {
           return (
-            <tr key={idx} className="text-center text-sm hover:bg-zinc-300 bg-zinc-50">
+            <tr key={idx} className="text-center sm:text-sm text-xs hover:bg-zinc-300 bg-zinc-50">
               <td className="border border-slate-400">
                 {element.iD_PEDIDO}
               </td>
@@ -56,7 +56,7 @@ export function OrdersList(props: any) {
               <td className="border border-slate-400">
                 <button
                   onClick={() => toDetails(element)}
-                  className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+                  className="bg-orange-500 hover:bg-orange-700 text-slate-900 hover:text-white w-full font-bold py-2 px-4 rounded"
                 >
                   Detalles
                 </button>

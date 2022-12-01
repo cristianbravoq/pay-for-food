@@ -68,21 +68,24 @@ function Details() {
   }, [valueState, msnState])
   
   function cambiarEstado() {
-    /* if (dataOrders.iD_ESTADO_PEDIDO !== 3)
+    if (dataOrders.iD_ESTADO_PEDIDO !== 3)
       updateOrder(
         dataOrders.iD_ESTADO_PEDIDO + 1,
         dataOrders.numerO_PEDIDO,
         authUser.iD_RESTAURANTE.toString()
-      ); */
+      );
     alertState()
     msnCambioEstado()
-    //navigate(`/Dashboard`);
+    navigate(`/Dashboard`);
   }
 
-
+  const [tel, setTel] = useState('3186480729')
+  if(dataOrders.payerID !== 0) {
+    setTel(dataOrders.payer.cel)
+  }
   function msnCambioEstado() {
     console.log(dataOrders.payerID)
-    sendMsn('573186480729', msnState)
+    sendMsn(tel, msnState)
     /* if(dataOrders.payerID !== 0) {
       sendMsn(dataOrders.payerID.cel, '')
     } */
@@ -99,7 +102,7 @@ function Details() {
   return (
     <div className="flex">
       <Sidebar />
-      <div className="h-screen flex flex-1 flex-col p-7">
+      <div className="h-screen flex flex-1 flex-col p-2 sm:p-7 sm:ml-20 ml-10">
         <div>
           <h1 className="text-2xl font-semibold ">Details</h1>
         </div>
@@ -141,11 +144,11 @@ function Details() {
             </ol>
           </div>
 
-          <div className="flex flex-row mt-5 justify-center gap-10">
-            <div className="flex flex-col w-1/3">
+          <div className="flex flex-col sm:flex-row flex-wrap items-center justify-between mt-5">
+            <div className="flex flex-col mb-4 sm:mb-0 w-5/6 sm:w-1/5">
               <button
                 onClick={handlePrint_Pedido}
-                className="bg-slate-200 hover:bg-slate-400 hover:text-white rounded-3xl border-2 border-slate-400"
+                className="rounded-md hover:rounded-sm border-2 border-slate-400 hover:text-slate-700 hover:bg-slate-50 hover:scale-105"
               >
                 <p className="estado-pedido">Imprimir pedido</p>
                 <img
@@ -156,10 +159,10 @@ function Details() {
                 />
               </button>
             </div>
-            <div className="flex flex-col w-1/3">
+            <div className="flex flex-col mb-4 sm:mb-0 w-5/6 sm:w-1/5">
               <button
                 onClick={() => toFactura(dataOrders)}
-                className="bg-slate-200 hover:bg-slate-400 hover:text-white rounded-3xl border-2 border-slate-400"
+                className="rounded-md hover:rounded-sm border-2 border-slate-400 hover:text-slate-700 hover:bg-slate-50 hover:scale-105"
               >
                 <p className="estado-pedido">Imprimir factura</p>
                 <img
@@ -170,10 +173,10 @@ function Details() {
                 />
               </button>
             </div>
-            <div className="flex flex-col w-1/3">
+            <div className="flex flex-col mb-4 sm:mb-0 w-5/6 sm:w-1/5">
               <button
                 onClick={cambiarEstado}
-                className="bg-slate-200 hover:bg-slate-400 hover:text-white rounded-3xl border-2 border-slate-400"
+                className="rounded-md hover:rounded-sm border-2 border-slate-400 hover:text-slate-700 hover:bg-slate-50 hover:scale-105"
               >
                 <p className="estado-pedido">Actualizar pedido</p>
                 <img
